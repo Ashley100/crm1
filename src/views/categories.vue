@@ -1,7 +1,7 @@
 <template>
   <div class="category-wrapper">
 		<div class="page-title">
-			<h3>Категории</h3>
+			<h3>Категории asd</h3>
 		</div>
 		
 		<section>

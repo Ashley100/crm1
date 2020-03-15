@@ -60,20 +60,33 @@
 
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators'
+import messages from '@/utils/messages'
 
 export default {
 	name: "login",
+	// 
 	data: () =>	({
 		email: '',
 		password: ''
 	}),
+	//
 	validations: {
 		email: { email, required },
 		password: { required, minLength: minLength(8) }
 	},
+	// 
+	mounted(){
+
+		// If route query defuned in utils/messages.js
+		if(messages[this.$route.query.message]) {
+			// Show this message with toast of Materialize ui components
+			this.$message(messages[this.$route.query.message]);
+		}
+	},
+	// 
 	methods: {
 		authSubmitHandler() {
-			console.log(this.$v.password.$params.minLength.min);
+			// console.log(this.$v.password.$params.minLength.min);
 			if(this.$v.$invalid) {
 				this.$v.$touch();
 				return;
